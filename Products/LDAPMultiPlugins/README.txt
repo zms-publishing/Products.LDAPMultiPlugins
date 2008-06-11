@@ -1,6 +1,8 @@
-======
-README
-======
+===========================
+ Products.LDAPMultiPlugins
+===========================
+
+.. contents::
 
 The LDAPMultiPlugins provides PluggableAuthService plugins that use LDAP as 
 the backend for the services they provide. The PluggableAuthService is a 
@@ -12,7 +14,7 @@ package as well.
 
 
 Caching
--------
+=======
 
 The results of some calls into the plugins provided by these package can be 
 cached using the Zope ZCacheable mechanism:
@@ -30,7 +32,7 @@ some of the possibly expensive API calls.
 
 
 Special features - Active Directory Multi Plugin
-------------------------------------------------
+================================================
 
 Properties of the ADMultiPlugin instance:
 
@@ -46,7 +48,7 @@ Properties of the ADMultiPlugin instance:
 
 
 Active Directory configuration hints
-------------------------------------
+====================================
 
 In order for groups support to work correctly, you may have to set the
 following properties. Every situation is different, but this has helped

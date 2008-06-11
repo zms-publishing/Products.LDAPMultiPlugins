@@ -1,9 +1,7 @@
-=======
-CHANGES
-=======
+Changelog for Products.LDAPMultiplugins
+=======================================
 
-This file contains change information for the LDAPMultiPlugins product.
-To see changes made to revisions prior to the latest version see HISTORY.txt.
+To see earlier changes please see HISTORY.txt.
 
 1.7 (unreleased)
 ----------------
