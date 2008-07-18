@@ -197,7 +197,7 @@ class LDAPMultiPlugin(LDAPPluginBase):
         else:
             l_results = []
             seen = []
-            criteria = {}
+            ldap_criteria = {}
 
             if id:
                 if uid_attr == 'dn':
@@ -205,23 +205,23 @@ class LDAPMultiPlugin(LDAPPluginBase):
                     # is searched for I need to hack around it... This 
                     # limits the usefulness of searching by ID if the user
                     # folder uses the full DN aas user ID.
-                    criteria[rdn_attr] = id
+                    ldap_criteria[rdn_attr] = id
                 else:
-                    criteria[uid_attr] = id
+                    ldap_criteria[uid_attr] = id
 
             if login:
-                criteria[login_attr] = login
+                ldap_criteria[login_attr] = login
 
             for key, val in kw.items():
                 if key not in (login_attr, uid_attr):
-                    criteria[key] = val
+                    ldap_criteria[key] = val
 
             # If no criteria are given create a criteria set that will
             # return all users
             if not login and not id:
-                criteria[login_attr] = ''
+                ldap_criteria[login_attr] = ''
 
-            l_results = acl.searchUsers(**criteria)
+            l_results = acl.searchUsers(**ldap_criteria)
 
             for l_res in l_results:
 

@@ -6,6 +6,11 @@ To see earlier changes please see HISTORY.txt.
 1.7 (unreleased)
 ----------------
 
+- Bug: LDAPMultiPlugin.enumerateUsers: The variable used as key for the
+  caching mechanism was mutated after being computed, leading to cache
+  keys that can never be found again. Found by Wichert Akkerman.
+  (http://www.dataflake.org/tracker/issue_00613)
+
 
 1.6 (2008-06-05)
 ----------------
