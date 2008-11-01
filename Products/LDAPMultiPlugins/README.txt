@@ -13,6 +13,21 @@ Please make sure to read the documentation included in the LDAPUserFolder
 package as well.
 
 
+Bug tracker
+===========
+
+Please post questions, bug reports or feature requests to the bug tracker
+at http://www.dataflake.org/tracker/
+
+SVN version
+===========
+
+You can retrieve the latest code from Subversion using setuptools or
+zc.buildout via this URL:
+
+http://svn.dataflake.org/svn/Products.LDAPMultiPlugins/trunk#egg=Products.LDAPMultiPlugins
+
+
 Caching
 =======
 
