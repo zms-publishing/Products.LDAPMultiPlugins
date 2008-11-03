@@ -6,7 +6,7 @@ To see earlier changes please see HISTORY.txt.
 1.8 (unreleased)
 ----------------
 
-...
+- Bug: Fixed the Zope dependency, which was listed as 2.8+. It's 2.9+.
 
 
 1.7 (2008-07-19)

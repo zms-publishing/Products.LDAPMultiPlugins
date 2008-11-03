@@ -41,7 +41,7 @@ setup(name='Products.%s' % NAME,
       namespace_packages=['Products'],
       zip_safe=False,
       install_requires=[
-        #"Zope >= 2.8",
+        #"Zope >= 2.9",
         "setuptools",
         "Products.LDAPUserFolder >= 2.9",
         "Products.PluggableAuthService >= 1.4.0",
