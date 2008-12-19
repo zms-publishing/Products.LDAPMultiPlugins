@@ -1,30 +1,42 @@
 ##############################################################################
 #
-# LDAPPluginBase    Base class for LDAP-based PAS-Plugins
+# Copyright (c) Jens Vagelpohl and Contributors. All Rights Reserved.
+#
+# This software is subject to the provisions of the Zope Public License,
+# Version 2.1 (ZPL).  A copy of the ZPL should accompany this distribution.
+# THIS SOFTWARE IS PROVIDED "AS IS" AND ANY AND ALL EXPRESS OR IMPLIED
+# WARRANTIES ARE DISCLAIMED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+# WARRANTIES OF TITLE, MERCHANTABILITY, AGAINST INFRINGEMENT, AND FITNESS
+# FOR A PARTICULAR PURPOSE.
 #
 ##############################################################################
+""" Base class for LDAPMultiPlugins-based PAS plugins
 
-__doc__     = """ LDAPPluginBase module """
-__version__ = '$Revision$'[11:-2]
+$Id$
+"""
 
 # General Python imports
 import copy
 import logging
 
 # Zope imports
-from Acquisition import aq_base
-from OFS.Folder import Folder
-from OFS.Cache import Cacheable
-from Globals import InitializeClass
 from AccessControl import ClassSecurityInfo
 from AccessControl.SecurityManagement import getSecurityManager
+from Acquisition import aq_base
+from Globals import InitializeClass
+from OFS.Cache import Cacheable
+from OFS.Folder import Folder
 
 from Products.PluggableAuthService.plugins.BasePlugin import BasePlugin
 from Products.PluggableAuthService.interfaces.plugins import \
-     IAuthenticationPlugin, IRolesPlugin, ICredentialsResetPlugin, \
-     IPropertiesPlugin
+    IAuthenticationPlugin
+from Products.PluggableAuthService.interfaces.plugins import \
+    ICredentialsResetPlugin
+from Products.PluggableAuthService.interfaces.plugins import IPropertiesPlugin
+from Products.PluggableAuthService.interfaces.plugins import IRolesPlugin
 from Products.PluggableAuthService.utils import classImplements
 
+from Products.LDAPMultiPlugins.interfaces import ILDAPMultiPlugin
 
 logger = logging.getLogger('event.LDAPMultiPlugin')
 
@@ -34,7 +46,8 @@ class LDAPPluginBase(Folder, BasePlugin, Cacheable):
     security = ClassSecurityInfo()
 
     manage_options = ( BasePlugin.manage_options[:1]
-                     + Folder.manage_options 
+                     + Folder.manage_options [:1]
+                     + Folder.manage_options[2:]
                      + Cacheable.manage_options
                      )
 
@@ -184,6 +197,7 @@ classImplements( LDAPPluginBase
                , ICredentialsResetPlugin
                , IPropertiesPlugin
                , IRolesPlugin
+               , ILDAPMultiPlugin
                )
 
 InitializeClass(LDAPPluginBase)

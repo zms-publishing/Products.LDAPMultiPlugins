@@ -1,35 +1,44 @@
-#####################################################################
+##############################################################################
 #
-# test_LDAPMultiPlugins.py
+# Copyright (c) Jens Vagelpohl and Contributors. All Rights Reserved.
 #
-# This software is governed by a license. See
-# LICENSE.txt for the terms of this license.
+# This software is subject to the provisions of the Zope Public License,
+# Version 2.1 (ZPL).  A copy of the ZPL should accompany this distribution.
+# THIS SOFTWARE IS PROVIDED "AS IS" AND ANY AND ALL EXPRESS OR IMPLIED
+# WARRANTIES ARE DISCLAIMED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+# WARRANTIES OF TITLE, MERCHANTABILITY, AGAINST INFRINGEMENT, AND FITNESS
+# FOR A PARTICULAR PURPOSE.
 #
-#####################################################################
-""" Unit tests for LDAPMultiPlugin and ActiveDirectoryMultiPlugin
+##############################################################################
+""" LDAPMultiPlugin and ActiveDirectoryMultiPlugin unit tests
 
 $Id$
 """
 
-from unittest import main
-from unittest import makeSuite
-from unittest import TestSuite
-from unittest import TestCase
+import unittest
 
 from Products.PluggableAuthService.interfaces.plugins import \
-     IUserEnumerationPlugin, IGroupsPlugin, IGroupEnumerationPlugin, \
-     IRoleEnumerationPlugin
+     IUserEnumerationPlugin
+from Products.PluggableAuthService.interfaces.plugins import \
+    IGroupsPlugin
+from Products.PluggableAuthService.interfaces.plugins import \
+    IGroupEnumerationPlugin
+from Products.PluggableAuthService.interfaces.plugins import \
+    IRoleEnumerationPlugin
+
+from Products.LDAPMultiPlugins.interfaces import ILDAPMultiPlugin
 
 
-class LMPBaseTests(TestCase):
+class LMPBaseTests(unittest.TestCase):
 
     def _getTargetClass(self):
         from Products.LDAPMultiPlugins.LDAPPluginBase import LDAPPluginBase
         return LDAPPluginBase
-    
 
     def test_interfaces(self):
         from zope.interface.verify import verifyClass
+
+        verifyClass(ILDAPMultiPlugin, self._getTargetClass())
 
         verifyClass(IUserEnumerationPlugin, self._getTargetClass())
         verifyClass(IGroupsPlugin, self._getTargetClass())
@@ -52,12 +61,12 @@ class LMPTests(LMPBaseTests):
         return LDAPMultiPlugin
 
 
-
 def test_suite():
-    return TestSuite((
-        makeSuite( ADMPTests ),
-        makeSuite( LMPTests ),
+    return unittest.TestSuite((
+        unittest.makeSuite(ADMPTests),
+        unittest.makeSuite(LMPTests),
         ))
 
 if __name__ == '__main__':
-    main(defaultTest='test_suite') 
+    unittest.main(defaultTest='test_suite') 
+

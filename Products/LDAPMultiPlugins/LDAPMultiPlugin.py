@@ -1,15 +1,19 @@
 ##############################################################################
 #
-# LDAPMultiPlugin   Shim to use the LDAPUserFolder with the
-#                   PluggableAuthenticationService
+# Copyright (c) Jens Vagelpohl and Contributors. All Rights Reserved.
 #
-# This software is governed by a license. See
-# LICENSE.txt for the terms of this license.
+# This software is subject to the provisions of the Zope Public License,
+# Version 2.1 (ZPL).  A copy of the ZPL should accompany this distribution.
+# THIS SOFTWARE IS PROVIDED "AS IS" AND ANY AND ALL EXPRESS OR IMPLIED
+# WARRANTIES ARE DISCLAIMED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+# WARRANTIES OF TITLE, MERCHANTABILITY, AGAINST INFRINGEMENT, AND FITNESS
+# FOR A PARTICULAR PURPOSE.
 #
 ##############################################################################
+""" LDAPMultiPlugin, a LDAP-enabled PluggableAuthSErvice plugin
 
-__doc__     = """ LDAPUserFolder shim module """
-__version__ = '$Revision$'[11:-2]
+$Id$
+"""
 
 # General Python imports
 import logging

@@ -6,6 +6,9 @@ To see earlier changes please see HISTORY.txt.
 1.8 (unreleased)
 ----------------
 
+- Feature: Implemented GenericSetup import/export handlers and registered
+  import/export steps.
+
 - Bug: Fixed the Zope dependency, which was listed as 2.8+. It's 2.9+.
 
 
