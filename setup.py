@@ -46,6 +46,12 @@ setup(name='Products.%s' % NAME,
         "Products.LDAPUserFolder >= 2.9",
         "Products.PluggableAuthService >= 1.4.0",
         ],
+      extras_require={
+          'exportimport': [
+                #'Zope >= 2.10.0
+                'Products.GenericSetup >= 1.4.0'
+                ],
+          },
       entry_points="""
       [zope2.initialize]
       Products.LDAPMultiPlugins = Products.LDAPMultiPlugins:initialize
