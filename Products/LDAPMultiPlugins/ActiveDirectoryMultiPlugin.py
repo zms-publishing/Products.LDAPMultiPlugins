@@ -22,9 +22,9 @@ from urllib import quote_plus
 
 # Zope imports
 from Acquisition import aq_base
-from Globals import InitializeClass
-from Globals import DTMLFile
-from Globals import package_home
+from App.class_init import default__class_init__ as InitializeClass
+from App.Common import package_home
+from App.special_dtml import DTMLFile
 from AccessControl import ClassSecurityInfo
 from Products.LDAPUserFolder import manage_addLDAPUserFolder
 from Products.LDAPUserFolder.LDAPDelegate import filter_format
