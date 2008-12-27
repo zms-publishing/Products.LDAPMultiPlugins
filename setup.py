@@ -45,6 +45,7 @@ setup(name='Products.%s' % NAME,
         "setuptools",
         "Products.LDAPUserFolder >= 2.9",
         "Products.PluggableAuthService >= 1.4.0",
+        "Products.GenericSetup >= 1.4.0",
         ],
       entry_points="""
       [zope2.initialize]
