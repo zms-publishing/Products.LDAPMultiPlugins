@@ -6,6 +6,10 @@ To see earlier changes please see HISTORY.txt.
 1.8 (unreleased)
 ----------------
 
+- Bug: Move plugin registration from initialize method to module level to
+  avoid multiple registrations.
+  (http://www.dataflake.org/tracker/issue_00631 by Ramon Navarro Bosch)
+
 - Feature: Implemented GenericSetup import/export handlers and registered
   import/export steps.
 

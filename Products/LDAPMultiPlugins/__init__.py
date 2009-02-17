@@ -10,7 +10,7 @@
 # FOR A PARTICULAR PURPOSE.
 #
 ##############################################################################
-""" LDAPMultiPlugin product initialization
+""" LDAPMultiPlugins product initialization
 
 $Id$
 """
@@ -18,17 +18,23 @@ $Id$
 from AccessControl.Permissions import add_user_folders
 from Products.PluggableAuthService.PluggableAuthService import \
         registerMultiPlugin
-from LDAPMultiPlugin import LDAPMultiPlugin, \
-                            manage_addLDAPMultiPlugin, \
-                            addLDAPMultiPluginForm
-from ActiveDirectoryMultiPlugin import ActiveDirectoryMultiPlugin, \
-                            manage_addActiveDirectoryMultiPlugin, \
-                            addActiveDirectoryMultiPluginForm
+
+from Products.LDAPMultiPlugins.LDAPMultiPlugin import addLDAPMultiPluginForm
+from Products.LDAPMultiPlugins.LDAPMultiPlugin import LDAPMultiPlugin
+from Products.LDAPMultiPlugins.LDAPMultiPlugin import manage_addLDAPMultiPlugin
+from Products.LDAPMultiPlugins.ActiveDirectoryMultiPlugin import \
+    ActiveDirectoryMultiPlugin
+from Products.LDAPMultiPlugins.ActiveDirectoryMultiPlugin import \
+    addActiveDirectoryMultiPluginForm
+from Products.LDAPMultiPlugins.ActiveDirectoryMultiPlugin import \
+    manage_addActiveDirectoryMultiPlugin
+
+registerMultiPlugin(LDAPMultiPlugin.meta_type)
+registerMultiPlugin(ActiveDirectoryMultiPlugin.meta_type)
 
 def initialize(context):
-    """ Initialize the LDAPMultiPlugin """
-    registerMultiPlugin(LDAPMultiPlugin.meta_type)
-    registerMultiPlugin(ActiveDirectoryMultiPlugin.meta_type)
+    """ Initialize the LDAPMultiPlugin 
+    """
 
     context.registerClass( LDAPMultiPlugin
                          , permission=add_user_folders
