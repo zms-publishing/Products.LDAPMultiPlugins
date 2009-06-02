@@ -17,8 +17,23 @@ $Id$
 
 import unittest
 
-from Products.GenericSetup.tests.common import DummyExportContext
-from Products.GenericSetup.tests.common import DummyImportContext 
+try:
+    from Products.GenericSetup.tests.common import DummyExportContext
+    from Products.GenericSetup.tests.common import DummyImportContext 
+
+    def test_suite():
+        return unittest.TestSuite((
+            unittest.makeSuite(LDAPMultiPluginXMLAdapterTests),
+            unittest.makeSuite(ActiveDirectoryMultiPluginXMLAdapterTests),
+            unittest.makeSuite(LDAPMultiPluginExportTests),
+            unittest.makeSuite(ADMultiPluginExportTests),
+            unittest.makeSuite(LDAPMultiPluginImportTests),
+            unittest.makeSuite(ADMultiPluginImportTests),
+        ))
+
+except ImportError:
+    def test_suite():
+        return unittest.TestSuite()
 
 from Products.LDAPMultiPlugins.tests.base import _LDAPMultiPluginsSetup
 from Products.LDAPMultiPlugins.tests.base import LMPXMLAdapterTestsBase
@@ -175,16 +190,6 @@ class ADMultiPluginImportTests(_LDAPMultiPluginsSetup):
         self.assertEquals(plugin.group_recurse, 0)
         self.assertEquals(plugin.group_recurse_depth, 0)
 
-
-def test_suite():
-    return unittest.TestSuite((
-        unittest.makeSuite(LDAPMultiPluginXMLAdapterTests),
-        unittest.makeSuite(ActiveDirectoryMultiPluginXMLAdapterTests),
-        unittest.makeSuite(LDAPMultiPluginExportTests),
-        unittest.makeSuite(ADMultiPluginExportTests),
-        unittest.makeSuite(LDAPMultiPluginImportTests),
-        unittest.makeSuite(ADMultiPluginImportTests),
-    ))
 
 
 _LDAPMULTIPLUGIN_BODY = """\
