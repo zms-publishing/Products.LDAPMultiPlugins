@@ -26,7 +26,7 @@ try:
     from Products.GenericSetup.tests.common import BaseRegistryTests
     
     
-    class LMPXMLAdapterTestsBase(BodyAdapterTestCase):
+    class LMPXMLAdapterTestsBase(BodyAdapterTestCase, unittest.TestCase):
     
         layer = ExportImportZCMLLayer
     
@@ -39,7 +39,7 @@ try:
         def setUp(self):
             import Products.LDAPMultiPlugins
             import Products.LDAPUserFolder
-            BodyAdapterTestCase.setUp(self)
+            super(LMPXMLAdapterTestsBase, self).setUp()
             try:
                 import Products.CMFCore
                 zcml.load_config('meta.zcml', Products.CMFCore)
