@@ -43,6 +43,7 @@ setup(name='Products.%s' % NAME,
       install_requires=[
         #Zope >= 2.9,
         "setuptools",
+        "python-ldap >= 2.0.6",
         "Products.LDAPUserFolder >= 2.9",
         "Products.PluggableAuthService >= 1.4.0",
         ],

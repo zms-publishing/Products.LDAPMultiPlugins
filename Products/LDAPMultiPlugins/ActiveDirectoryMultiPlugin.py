@@ -15,6 +15,7 @@
 $Id$
 """
 
+from ldap.filter import filter_format
 import logging
 import os
 from urllib import quote_plus
@@ -26,7 +27,6 @@ from App.special_dtml import DTMLFile
 from AccessControl import ClassSecurityInfo
 from zope.interface import implementedBy
 
-from dataflake.ldapconnection.connection import filter_format
 from Products.LDAPUserFolder import manage_addLDAPUserFolder
 from Products.LDAPUserFolder.utils import BINARY_ATTRIBUTES
 from Products.PluggableAuthService.interfaces.plugins import \
