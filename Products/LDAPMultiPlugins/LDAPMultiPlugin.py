@@ -225,7 +225,9 @@ class LDAPMultiPlugin(LDAPPluginBase):
             if not login and not id:
                 ldap_criteria[login_attr] = ''
 
-            l_results = acl.searchUsers(**ldap_criteria)
+            l_results = acl.searchUsers( exact_match=exact_match
+                                       , **ldap_criteria
+                                       )
 
             for l_res in l_results:
 

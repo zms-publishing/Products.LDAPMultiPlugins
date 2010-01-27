@@ -6,6 +6,14 @@ To see earlier changes please see HISTORY.txt.
 1.9 (unreleased)
 ----------------
 
+- Feature: The enumerateUsers method has a parameter "exact_match" that 
+  was only applied if the search was by logn or user id, since that is
+  the way it is used in the standard PluggableAuthService plugins. 
+  However, the user folder searchUsers method can accept this parameter
+  as well and thus limit searches by other criteria to exact matches.
+  This is useful enough to implement, even though it breaks the standard.
+  (http://www.dataflake.org/tracker/issue_00656)
+
 
 1.8 (2009-02-17)
 ----------------
