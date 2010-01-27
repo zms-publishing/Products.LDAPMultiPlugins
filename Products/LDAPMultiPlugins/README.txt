@@ -7,10 +7,10 @@
 The LDAPMultiPlugins provides PluggableAuthService plugins that use LDAP as 
 the backend for the services they provide. The PluggableAuthService is a 
 Zope user folder product that can be extended in modular fashion using 
-various plugins. See DEPENDENCIES.txt for software needed by this package.
+various plugins.
 
 Please make sure to read the documentation included in the LDAPUserFolder 
-package as well.
+package (http://pypi.python.org/pypi/Products.LDAPUserFolder) as well.
 
 
 Bug tracker

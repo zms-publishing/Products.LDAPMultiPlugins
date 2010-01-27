@@ -3,7 +3,7 @@ Changelog for Products.LDAPMultiplugins
 
 To see earlier changes please see HISTORY.txt.
 
-1.9 (unreleased)
+1.9 (2010-01-27)
 ----------------
 
 - Feature: The enumerateUsers method has a parameter "exact_match" that 
