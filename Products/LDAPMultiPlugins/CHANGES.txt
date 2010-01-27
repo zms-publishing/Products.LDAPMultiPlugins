@@ -3,6 +3,10 @@ Changelog for Products.LDAPMultiplugins
 
 To see earlier changes please see HISTORY.txt.
 
+1.10 (unreleased)
+-----------------
+
+
 1.9 (2010-01-27)
 ----------------
 
