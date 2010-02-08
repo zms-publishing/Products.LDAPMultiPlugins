@@ -9,41 +9,19 @@ the backend for the services they provide. The PluggableAuthService is a
 Zope user folder product that can be extended in modular fashion using 
 various plugins.
 
-Please make sure to read the documentation included in the LDAPUserFolder 
-package (http://pypi.python.org/pypi/Products.LDAPUserFolder) as well.
-
 
 Bug tracker
 ===========
-
 Please post questions, bug reports or feature requests to the bug tracker
 at http://www.dataflake.org/tracker/
 
+
 SVN version
 ===========
-
 You can retrieve the latest code from Subversion using setuptools or
 zc.buildout via this URL:
 
 http://svn.dataflake.org/svn/Products.LDAPMultiPlugins/trunk#egg=Products.LDAPMultiPlugins
-
-
-Caching
-=======
-
-The results of some calls into the plugins provided by these package can be 
-cached using the Zope ZCacheable mechanism:
-
-- In the Zope Management Interface (ZMI) of your PluggableAuthService
-  instance, select 'RAM Cache Manager' from the dropdown, give it an ID
-  and configure it according to your needs.
-
-- Click on your LDAP/ActiveDirectoryMultiPlugin and use the 'Cache' 
-  ZMI tab on the far right to associate the newly created RAM Cache
-  Manager object with the plugin.
-
-Now your plugin will use the RAM Cache Manager object to cache results from 
-some of the possibly expensive API calls.
 
 
 Special features - Active Directory Multi Plugin
