@@ -23,8 +23,9 @@ URL to retrieve the latest development code as Python egg::
 Bug tracker
 -----------
 For bug reports, suggestions or questions please use the 
-dataflake bug tracker at 
-`http://www.dataflake.org/tracker <http://www.dataflake.org/tracker/>`_.
+Launchpad bug tracker at 
+`https://bugs.launchpad.net/products.ldapmultiplugins 
+<https://bugs.launchpad.net/products.ldapmultiplugins>`_.
 
 Setting up a development sandbox and testing
 --------------------------------------------

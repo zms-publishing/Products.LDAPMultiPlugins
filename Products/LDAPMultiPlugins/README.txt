@@ -13,7 +13,7 @@ various plugins.
 Bug tracker
 ===========
 Please post questions, bug reports or feature requests to the bug tracker
-at http://www.dataflake.org/tracker/
+at https://bugs.launchpad.net/products.ldapmultiplugins
 
 
 SVN version
