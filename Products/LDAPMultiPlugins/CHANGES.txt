@@ -6,6 +6,10 @@ To see earlier changes please see HISTORY.txt.
 1.10 (unreleased)
 -----------------
 
+- Bug: enumerateUsers returned undesired results if an exact match
+  was required since LDAP searches are not case sensitive.
+  (https://bugs.launchpad.net/bugs/585901)
+
 
 1.9 (2010-01-27)
 ----------------

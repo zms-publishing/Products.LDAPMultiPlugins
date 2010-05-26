@@ -188,8 +188,12 @@ class LDAPMultiPlugin(LDAPPluginBase):
         if exact_match and (id or login):
             if id:
                 ldap_user = acl.getUserById(id)
+                if ldap_user is not None and ldap_user.getId() != id:
+                    ldap_user = None
             elif login:
                 ldap_user = acl.getUser(login)
+                if ldap_user is not None and ldap_user.getUserName() != login:
+                    ldap_user = None
 
             if ldap_user is not None:
                 qs = 'user_dn=%s' % quote_plus(ldap_user.getUserDN())
