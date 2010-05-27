@@ -3,7 +3,7 @@ Changelog for Products.LDAPMultiplugins
 
 To see earlier changes please see HISTORY.txt.
 
-1.10 (unreleased)
+1.10 (2010-05-27)
 -----------------
 
 - Bug: enumerateUsers returned undesired results if an exact match
