@@ -3,7 +3,7 @@ Changelog for Products.LDAPMultiplugins
 
 To see earlier changes please see HISTORY.txt.
 
-1.11 (unreleased)
+1.11 (2010-05-28)
 -----------------
 
 - Bug: Added GenericSetup magic to fully provide the INode interface
