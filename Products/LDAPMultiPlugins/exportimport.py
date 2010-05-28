@@ -59,6 +59,8 @@ class LDAPMultiPluginXMLAdapter( XMLAdapterBase
 
         self._logger.info('LDAPMultiPlugin imported.')
 
+    node = property(_exportNode, _importNode)
+
     def _exportBody(self):
         """ Export the object as a file body.
         """

@@ -6,6 +6,11 @@ To see earlier changes please see HISTORY.txt.
 1.11 (unreleased)
 -----------------
 
+- Bug: Added GenericSetup magic to fully provide the INode interface
+  for the exporter and importer classes, making it easier to nest 
+  within other importers.
+  (https://bugs.launchpad.net/bugs/586500)
+
 
 1.10 (2010-05-27)
 -----------------
