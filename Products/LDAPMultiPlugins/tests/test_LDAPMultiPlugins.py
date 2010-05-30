@@ -17,25 +17,26 @@ $Id$
 
 import unittest
 
-from Products.PluggableAuthService.interfaces.plugins import \
-     IUserEnumerationPlugin
-from Products.PluggableAuthService.interfaces.plugins import \
-    IGroupsPlugin
-from Products.PluggableAuthService.interfaces.plugins import \
-    IGroupEnumerationPlugin
-from Products.PluggableAuthService.interfaces.plugins import \
-    IRoleEnumerationPlugin
-
-from Products.LDAPMultiPlugins.interfaces import ILDAPMultiPlugin
-
 
 class LMPBaseTests(unittest.TestCase):
+
+    def _makeOne(self):
+        return self._getTargetClass()('testplugin')
 
     def _getTargetClass(self):
         from Products.LDAPMultiPlugins.LDAPPluginBase import LDAPPluginBase
         return LDAPPluginBase
 
     def test_interfaces(self):
+        from Products.LDAPMultiPlugins.interfaces import ILDAPMultiPlugin
+        from Products.PluggableAuthService.interfaces.plugins import \
+             IUserEnumerationPlugin
+        from Products.PluggableAuthService.interfaces.plugins import \
+            IGroupsPlugin
+        from Products.PluggableAuthService.interfaces.plugins import \
+            IGroupEnumerationPlugin
+        from Products.PluggableAuthService.interfaces.plugins import \
+            IRoleEnumerationPlugin
         from zope.interface.verify import verifyClass
 
         verifyClass(ILDAPMultiPlugin, self._getTargetClass())
@@ -44,6 +45,14 @@ class LMPBaseTests(unittest.TestCase):
         verifyClass(IGroupsPlugin, self._getTargetClass())
         verifyClass(IGroupEnumerationPlugin, self._getTargetClass())
         verifyClass(IRoleEnumerationPlugin, self._getTargetClass())
+
+    def test_demangle_invalid_userid(self):
+        plugin = self._makeOne()
+        plugin.prefix = 'prefix_'
+
+        self.assertEquals(plugin._demangle(None), None)
+        self.assertEquals(plugin._demangle('incorrectprefix'), None)
+        self.assertEquals(plugin._demangle('prefix_user1'), 'user1')
 
 
 class ADMPTests(LMPBaseTests):
