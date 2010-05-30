@@ -5,6 +5,10 @@ To see earlier changes please see HISTORY.txt.
 
 1.12 (unreleased)
 -----------------
+- Bug: Demangling user prefix could not deal with non-string user
+  ids, which may appear in certain cases.
+  (https://bugs.launchpad.net/bugs/586931)
+
 - Feature: Added some Sphinx documentation (backport from trunk)
 
 - Reorganisation: Move documentation text files around to conform
