@@ -5,6 +5,12 @@ To see earlier changes please see HISTORY.txt.
 
 2.0 (unreleased)
 ----------------
+
+- Bug: Added GenericSetup magic to fully provide the INode interface
+  for the exporter and importer classes, making it easier to nest 
+  within other importers.
+  (https://bugs.launchpad.net/bugs/586500)
+
 - Bug: enumerateUsers returned undesired results if an exact match
   was required since LDAP searches are not case sensitive.
   (https://bugs.launchpad.net/bugs/585901)
