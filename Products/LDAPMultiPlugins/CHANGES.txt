@@ -5,6 +5,9 @@ To see earlier changes please see HISTORY.txt.
 
 1.13 (unreleased)
 -----------------
+- Bug: When searching for roles, make sure to consider all 
+  search terms.
+  (https://bugs.launchpad.net/bugs/656011)
 
 
 1.12 (2010-07-29)

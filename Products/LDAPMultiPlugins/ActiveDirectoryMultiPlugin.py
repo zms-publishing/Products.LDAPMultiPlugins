@@ -422,6 +422,19 @@ class ActiveDirectoryMultiPlugin(LDAPPluginBase):
             filt.append(filter_format('(%s=%s)',(self.groupid_attr, id)))
         elif id:
             filt.append(filter_format('(%s=*%s*)',(self.groupid_attr, id)))
+
+        for (search_param, search_term) in kw.items():
+            if search_term and exact_match:
+                filt.append( filter_format( '(%s=%s)'
+                                               , (search_param, search_term)
+                                               ) )
+            elif search_term:
+                filt.append( filter_format( '(%s=*%s*)'
+                                               , (search_param, search_term)
+                                               ) )
+            else:
+                filt.append('(%s=*)' % search_param)
+
         filt = '(&%s)' % ''.join(filt)
 
         if self.groupid_attr.lower() in BINARY_ATTRIBUTES:
