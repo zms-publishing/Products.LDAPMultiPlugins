@@ -3,7 +3,7 @@ Changelog for Products.LDAPMultiplugins
 
 To see earlier changes please see HISTORY.txt.
 
-1.13 (unreleased)
+1.13 (2010-11-18)
 -----------------
 - Bug: When searching for roles, make sure to consider all 
   search terms.
