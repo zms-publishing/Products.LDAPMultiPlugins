@@ -84,7 +84,7 @@ class LDAPPluginBase(Folder, BasePlugin, Cacheable):
         user = acl.getUser(login, pwd=password)
 
         if user is None:
-            return None, None
+            return None
 
         return (user.getId(), user.getUserName())
 

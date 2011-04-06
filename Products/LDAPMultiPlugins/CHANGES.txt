@@ -5,6 +5,11 @@ To see earlier changes please see HISTORY.txt.
 
 1.14 (unreleased)
 -----------------
+- Bug: When a user could not be authenticated, the plugins 
+  would incorrectly return a tuple (None, None) instead
+  of just None as specified in the PAS IAuthenticationPlugin 
+  interface.
+  (https://bugs.launchpad.net/bugs/751247)
 
 
 1.13 (2010-11-18)
