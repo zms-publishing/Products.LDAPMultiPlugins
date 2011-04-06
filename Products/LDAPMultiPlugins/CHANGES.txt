@@ -3,7 +3,7 @@ Changelog for Products.LDAPMultiplugins
 
 To see earlier changes please see HISTORY.txt.
 
-1.14 (unreleased)
+1.14 (2011-04-06)
 -----------------
 - Bug: When a user could not be authenticated, the plugins 
   would incorrectly return a tuple (None, None) instead
