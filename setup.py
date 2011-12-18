@@ -1,19 +1,33 @@
+##############################################################################
+#
+# Copyright (c) 2010 Jens Vagelpohl and Contributors. All Rights Reserved.
+#
+# This software is subject to the provisions of the Zope Public License,
+# Version 2.1 (ZPL).  A copy of the ZPL should accompany this distribution.
+# THIS SOFTWARE IS PROVIDED "AS IS" AND ANY AND ALL EXPRESS OR IMPLIED
+# WARRANTIES ARE DISCLAIMED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+# WARRANTIES OF TITLE, MERCHANTABILITY, AGAINST INFRINGEMENT, AND FITNESS
+# FOR A PARTICULAR PURPOSE.
+#
+##############################################################################
+
+__version__ = '2.0dev'
+
 import os
 from setuptools import setup
 from setuptools import find_packages
 
 NAME = 'LDAPMultiPlugins'
 here = os.path.abspath(os.path.dirname(__file__))
-package = os.path.join(here, 'Products', NAME)
 
 def _read(name):
-    f = open(os.path.join(package, name))
+    f = open(os.path.join(here, name))
     return f.read()
 
 _boundary = '\n' + ('-' * 60) + '\n\n'
 
 setup(name='Products.%s' % NAME,
-      version=_read('VERSION.txt').strip(),
+      version=__version__,
       description='LDAP-backed plugins for the Zope2 PluggableAuthService',
       long_description=( _read('README.txt') 
                        + _boundary
@@ -26,7 +40,7 @@ setup(name='Products.%s' % NAME,
         "Framework :: Zope2",
         "Intended Audience :: Developers",
         "License :: OSI Approved :: Zope Public License",
-        "Programming Language :: Python",
+        "Programming Language :: Python :: 2",
         "Topic :: Internet :: WWW/HTTP :: Site Management",
         "Topic :: Software Development",
         "Topic :: System :: Systems Administration :: Authentication/Directory :: LDAP",
@@ -40,16 +54,16 @@ setup(name='Products.%s' % NAME,
       include_package_data=True,
       namespace_packages=['Products'],
       zip_safe=False,
+      setup_requires=['setuptools-git'],
       install_requires=[
-        #Zope >= 2.9,
         'setuptools',
+        'Zope2',
         'python-ldap >= 2.0.6',
         'Products.LDAPUserFolder >= 2.9',
         'Products.PluggableAuthService >= 1.4.0',
         ],
       extras_require={
           'exportimport': [
-                # Zope >= 2.10.0
                 'Products.GenericSetup >= 1.4.0'
                 ]
       },

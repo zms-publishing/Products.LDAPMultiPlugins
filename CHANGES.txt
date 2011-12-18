@@ -5,6 +5,9 @@ To see earlier changes please see HISTORY.txt.
 
 2.0 (unreleased)
 ----------------
+- Switched documentation to point to the new Git repository
+
+- Refactoring: Moved documentary text files into egg root
 
 - Bug: Demangling user prefix could not deal with non-string user 
   ids, which may appear in certain cases.

@@ -5,20 +5,13 @@ Development
 
 Getting the source code
 -----------------------
-The source code is maintained in the Dataflake Subversion 
-repository at `http://svn.dataflake.org <http://svn.dataflake.org/>`_. 
+The source code is maintained in the Dataflake Git repository.
 To check out the trunk::
 
-  svn co http://svn.dataflake.org/svn/Products.LDAPMultiPlugins/trunk/
+  $ git clone https://git.dataflake.org/git/Products.LDAPMultiPlugins
 
 You can also browse the code online at 
-`http://svn.dataflake.org/viewvc/Products.LDAPMultiPlugins 
-<http://svn.dataflake.org/viewvc/Products.LDAPMultiPlugins/>`_.
-
-When using setuptools or zc.buildout you can use the following 
-URL to retrieve the latest development code as Python egg::
-
-  http://svn.dataflake.org/svn/Products.LDAPMultiPlugins/trunk#egg=Products.LDAPMultiPlugins
+http://git.dataflake.org/cgit/Products.LDAPMultiPlugins
 
 Bug tracker
 -----------
