@@ -165,7 +165,11 @@ class ActiveDirectoryMultiPlugin(LDAPPluginBase):
         self.grouptitle_attr = grouptitle_attr
         self.group_class = group_class
         self.group_recurse = group_recurse
-        self.group_recurse_depth = group_recurse_depth
+
+    def determine_groups_lookup_dn(self, acl):
+        """Return lookup_groups_base if it exists otherwhise the groups_base.
+        """
+        return getattr(self, 'lookup_groups_base', acl.groups_base)
 
     security.declarePublic('getGroupsForPrincipal')
     def getGroupsForPrincipal(self, user, request=None, attr=None):
@@ -205,12 +209,14 @@ class ActiveDirectoryMultiPlugin(LDAPPluginBase):
         filt = '(&(objectClass=%s)(|%s))' % (self.group_class, ''.join(cn_flts))
 
         delegate = acl._delegate
-        R = delegate.search(acl.groups_base, acl.groups_scope, filter=filt)
+
+        groups_base = self.determine_groups_lookup_dn(acl)
+        R = delegate.search(groups_base, acl.groups_scope, filter=filt)
 
         if R['exception']:
             logger.error("Failed to locate groups for principal in %s "
                          "(scope=%s, filter=%s): %s",
-                         acl.groups_base, acl.groups_scope, filt,
+                         groups_base, acl.groups_scope, filt,
                          R['exception'])
             return ()
         if self.group_recurse:
@@ -255,11 +261,14 @@ class ActiveDirectoryMultiPlugin(LDAPPluginBase):
             filt = "(&(objectClass=%s)(|%s))" % (self.group_class, bits_s)
             acl = self.acl_users
             delegate = acl._delegate
-            R = delegate.search(acl.groups_base, acl.groups_scope, filter=filt)
+
+            groups_base = self.determine_groups_lookup_dn(acl)
+            R = delegate.search(groups_base, acl.groups_scope, filter=filt)
+
             if R['exception']:
                 logger.error("Failed to recursively search for group in %s "
                              "(scope=%s, filter=%s): %s",
-                             acl.groups_base, acl.groups_scope, filt,
+                             groups_base, acl.groups_scope, filt,
                              R['exception'])
             else:
                 if depth < self.group_recurse_depth:    
