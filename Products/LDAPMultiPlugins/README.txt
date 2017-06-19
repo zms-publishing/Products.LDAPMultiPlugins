@@ -9,6 +9,17 @@ the backend for the services they provide. The PluggableAuthService is a
 Zope user folder product that can be extended in modular fashion using 
 various plugins.
 
+Customizations:
+===============
+
+This fork contains the following customizations:
+
+Lookup groups base DN
+---------------------
+
+The optional property `lookup_groups_base` allows to use different base DNs for group lookups than for group enumeration.
+If the plugin_property `lookup_groups_base` is defined, the plugin will use the DN defined in `lookup_groups_base` for group lookups (`getGroupsForPrincipal`), but the group enumeration ('enumerateGroups`) still uses the DN defined in the property `groups_base`.
+
 
 Bug tracker
 ===========
