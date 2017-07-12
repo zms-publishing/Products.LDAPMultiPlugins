@@ -1,1 +1,2 @@
-.. include:: ../Products/LDAPMultiPlugins/CHANGES.txt
+1.15-ftw1 (2017-07-12)
+----------------------
