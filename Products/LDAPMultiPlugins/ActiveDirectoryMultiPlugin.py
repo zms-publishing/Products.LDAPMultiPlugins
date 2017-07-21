@@ -224,7 +224,7 @@ class ActiveDirectoryMultiPlugin(LDAPPluginBase):
         else:
             groups = R['results']
 
-        results = [ x[attr][0] for x in groups]
+        results = [x[attr][0] for x in groups if x['dn'].endswith(acl.groups_base)]
 
         self.ZCacheable_set(results, view_name=view_name, keywords=criteria)
 
