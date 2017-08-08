@@ -226,9 +226,18 @@ class ActiveDirectoryMultiPlugin(LDAPPluginBase):
 
         results = [x[attr][0] for x in groups if x['dn'].endswith(acl.groups_base)]
 
-        self.ZCacheable_set(results, view_name=view_name, keywords=criteria)
+        ascii_results = []
+        for result in results:
+            try:
+                result.decode('ascii')
+            except UnicodeDecodeError:
+                pass
+            else:
+                ascii_results.append(result)
 
-        return results
+        self.ZCacheable_set(ascii_results, view_name=view_name, keywords=criteria)
+
+        return ascii_results
 
     def _recurseGroups(self, ldap_results, temp=None, seen=None, depth=0):
         """ Given a set of LDAP result data for a group search, return
