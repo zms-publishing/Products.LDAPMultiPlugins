@@ -1,7 +1,7 @@
 1.15.post3 (unreleased)
 -----------------------
 
-- Nothing changed yet.
+- Handle CNs with commas in them in group membership resolution. [lgraf]
 
 
 1.15.post2 (2017-08-08)

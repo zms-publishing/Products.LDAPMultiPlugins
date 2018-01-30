@@ -20,6 +20,11 @@ Lookup groups base DN
 The optional property `lookup_groups_base` allows to use different base DNs for group lookups than for group enumeration.
 If the plugin_property `lookup_groups_base` is defined, the plugin will use the DN defined in `lookup_groups_base` for group lookups (`getGroupsForPrincipal`), but the group enumeration ('enumerateGroups`) still uses the DN defined in the property `groups_base`.
 
+Support for commas in group CNs
+-------------------------------
+
+If a group CN contains a comma, some special care is taken to make group membership resolution work.
+
 
 Bug tracker
 ===========
