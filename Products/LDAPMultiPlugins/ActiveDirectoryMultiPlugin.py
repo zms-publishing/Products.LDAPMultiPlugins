@@ -201,7 +201,16 @@ class ActiveDirectoryMultiPlugin(LDAPPluginBase):
         if ldap_user is None:
             return ()
 
-        cns = [ x.split(',')[0] for x in (ldap_user.memberOf or []) ]
+        # Avoid splitting on commas that are part of CNs by masking them...
+        masked_dns = [
+            x.replace('\\,', '$COMMA$') for x in (ldap_user.memberOf or [])]
+
+        # ...and unmasking them after splitting. We also get rid of the
+        # escaping backslash, because apparently either delegate.search or
+        # the Python ldap module already takes care of escaping commas in
+        # filters accordingly.
+        cns = [x.split(',')[0].replace('$COMMA$', ',') for x in masked_dns]
+
         if not cns:
             return ()
         cns = [x.split('=')[1] for x in cns]
