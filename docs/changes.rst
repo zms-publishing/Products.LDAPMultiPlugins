@@ -1,4 +1,4 @@
-1.15.post3 (unreleased)
+1.15.post3 (2018-02-11)
 -----------------------
 
 - Handle CNs with commas in them in group membership resolution. [lgraf]
