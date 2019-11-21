@@ -12,7 +12,7 @@
 ##############################################################################
 """ LDAPMultiPlugin and ActiveDirectoryMultiPlugin unit tests
 
-$Id$
+$Id: test_LDAPMultiPlugins.py 1970 2010-05-30 11:36:24Z jens $
 """
 
 import unittest

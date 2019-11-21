@@ -1,7 +1,7 @@
-
-# /
+*.py?
 /*.egg-info
 /*.egg
+/*.eggs
 /dist
 /develop-eggs
 /bin

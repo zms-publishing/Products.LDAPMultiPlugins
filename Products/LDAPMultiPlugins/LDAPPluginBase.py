@@ -12,7 +12,7 @@
 ##############################################################################
 """ Base class for LDAPMultiPlugins-based PAS plugins
 
-$Id$
+$Id: LDAPPluginBase.py 2057 2011-04-06 12:45:08Z jens $
 """
 
 # General Python imports
@@ -23,7 +23,8 @@ import logging
 from AccessControl import ClassSecurityInfo
 from AccessControl.SecurityManagement import getSecurityManager
 from Acquisition import aq_base
-from App.class_init import default__class_init__ as InitializeClass
+# from App.class_init import default__class_init__ as InitializeClass
+from AccessControl.class_init import InitializeClass
 from OFS.Cache import Cacheable
 from OFS.Folder import Folder
 
@@ -84,7 +85,7 @@ class LDAPPluginBase(Folder, BasePlugin, Cacheable):
         user = acl.getUser(login, pwd=password)
 
         if user is None:
-            return None, None
+            return None
 
         return (user.getId(), user.getUserName())
 

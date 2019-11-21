@@ -12,7 +12,7 @@
 ##############################################################################
 """ Export/import tests
 
-$Id$
+$Id: test_exportimport.py 1798 2009-06-02 15:53:44Z jens $
 """
 
 import unittest

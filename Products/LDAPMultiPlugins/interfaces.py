@@ -12,7 +12,7 @@
 ##############################################################################
 """ Interfaces for LDAPMultiPlugins package classes
 
-$Id$
+$Id: interfaces.py 1694 2009-02-08 08:21:45Z jens $
 """
 
 from zope.interface import Interface

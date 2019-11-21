@@ -12,17 +12,18 @@
 ##############################################################################
 """ LDAPMultiPlugin, a LDAP-enabled PluggableAuthSErvice plugin
 
-$Id$
+$Id: LDAPMultiPlugin.py 1954 2010-05-26 15:44:15Z jens $
 """
 
 # General Python imports
 import logging
 import os
-from urllib import quote_plus
+from urllib.parse import quote_plus
 
 # Zope imports
 from Acquisition import aq_base
-from App.class_init import default__class_init__ as InitializeClass
+# from App.class_init import default__class_init__ as InitializeClass
+from AccessControl.class_init import InitializeClass
 from App.Common import package_home
 from App.special_dtml import DTMLFile
 from AccessControl import ClassSecurityInfo
@@ -35,7 +36,7 @@ from Products.PluggableAuthService.interfaces.plugins import \
      IRoleEnumerationPlugin
 from Products.PluggableAuthService.utils import classImplements
 
-from LDAPPluginBase import LDAPPluginBase
+from .LDAPPluginBase import LDAPPluginBase
 
 logger = logging.getLogger('event.LDAPMultiPlugin')
 _dtmldir = os.path.join(package_home(globals()), 'dtml')
@@ -114,6 +115,7 @@ class LDAPMultiPlugin(LDAPPluginBase):
     """ The adapter that mediates between the PAS and the LDAPUserFolder """
     security = ClassSecurityInfo()
     meta_type = 'LDAP Multi Plugin'
+    zmi_icon = 'fas fa-cogs'
 
     security.declarePrivate('getGroupsForPrincipal')
     def getGroupsForPrincipal(self, user, request=None, attr=None):
@@ -300,7 +302,7 @@ class LDAPMultiPlugin(LDAPPluginBase):
                 return (group_info,)
 
         if id is None and exact_match:
-            raise ValueError, 'Exact Match requested but no id provided'
+            raise ValueError('Exact Match requested but no id provided')
         elif id is not None:
             kw[self.groupid_attr] = id
 

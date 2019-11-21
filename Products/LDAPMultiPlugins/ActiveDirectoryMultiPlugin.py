@@ -12,16 +12,17 @@
 ##############################################################################
 """ ActiveDirectoryUserFolder shim module
 
-$Id$
+$Id: ActiveDirectoryMultiPlugin.py 2044 2010-11-18 12:53:21Z jens $
 """
 
 from ldap.filter import filter_format
 import logging
 import os
-from urllib import quote_plus
+from urllib.parse import quote_plus
 
 from Acquisition import aq_base
-from App.class_init import default__class_init__ as InitializeClass
+# from App.class_init import default__class_init__ as InitializeClass
+from AccessControl.class_init import InitializeClass
 from App.Common import package_home
 from App.special_dtml import DTMLFile
 from AccessControl import ClassSecurityInfo
@@ -34,7 +35,7 @@ from Products.PluggableAuthService.interfaces.plugins import \
      IRoleEnumerationPlugin
 from Products.PluggableAuthService.utils import classImplements
 
-from LDAPPluginBase import LDAPPluginBase
+from .LDAPPluginBase import LDAPPluginBase
 
 
 logger = logging.getLogger('event.LDAPMultiPlugin')
@@ -315,7 +316,7 @@ class ActiveDirectoryMultiPlugin(LDAPPluginBase):
                 ldap_user = acl.getUser(login)
             else:
                 msg = 'Exact Match specified but no ID or Login given'
-                raise ValueError, msg
+                raise ValueError(msg)
 
             if ldap_user is not None:
                 qs = 'user_dn=%s' % quote_plus(ldap_user.getUserDN())
@@ -409,7 +410,7 @@ class ActiveDirectoryMultiPlugin(LDAPPluginBase):
             return ()
 
         if id is None and exact_match != 0:
-            raise ValueError, 'Exact Match requested but no id provided'
+            raise ValueError('Exact Match requested but no id provided')
         elif id is None:
             id = ''
             
@@ -422,6 +423,19 @@ class ActiveDirectoryMultiPlugin(LDAPPluginBase):
             filt.append(filter_format('(%s=%s)',(self.groupid_attr, id)))
         elif id:
             filt.append(filter_format('(%s=*%s*)',(self.groupid_attr, id)))
+
+        for (search_param, search_term) in kw.items():
+            if search_term and exact_match:
+                filt.append( filter_format( '(%s=%s)'
+                                               , (search_param, search_term)
+                                               ) )
+            elif search_term:
+                filt.append( filter_format( '(%s=*%s*)'
+                                               , (search_param, search_term)
+                                               ) )
+            else:
+                filt.append('(%s=*)' % search_param)
+
         filt = '(&%s)' % ''.join(filt)
 
         if self.groupid_attr.lower() in BINARY_ATTRIBUTES:

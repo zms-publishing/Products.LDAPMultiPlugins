@@ -12,7 +12,7 @@
 ##############################################################################
 """ LDAPMultiPlugins product initialization
 
-$Id$
+$Id: __init__.py 1709 2009-02-17 13:49:17Z jens $
 """
 
 from AccessControl.Permissions import add_user_folders

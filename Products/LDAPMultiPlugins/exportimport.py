@@ -12,7 +12,7 @@
 ##############################################################################
 """ LDAPMultiPlugins GenericSetup support
 
-$Id$
+$Id: exportimport.py 1959 2010-05-28 12:38:57Z jens $
 """
 
 from zope.component import adapts
